@@ -22,47 +22,41 @@ const data = [
     {name: 'Страшный Суд', url: 'img\\страшный_суд.jpg', total: 'Это искупление, осуждение. Человек сам себя осуждает из-за неправильных поступков. Лучше всего отпустить ситуацию, чтобы продолжать нормально жить и самосовершенствоваться.', love: 'Отношения закончатся плохо. Разрыв принесет боль, страдание, разочарование.', health: 'Гадающего ожидают проблемы со здоровьем. Возможны кризисные состояния. Человеку может предстоять операция. Однако по возможности хирургическое вмешательство рекомендуется отложить до более благоприятного периода. Это связано с тем, что велик риск неблагоприятного исхода операции. Карта может также предвещать неожиданные заболевания или обострение хронических патологий.', affairs: 'В ближайшее время вам придется принимать важное решение. Торопиться не следует. Важно все тщательно обдумать. Только в этом случае решение будет правильным. Однако может возникнуть и такая ситуация, которая потребуется экстренных мер. Узнать, какой будет исход – благоприятный или нет, помогут другие карты. Другое значение карты – деловая встреча, важные переговоры. Студентам аркан предвещает скорые экзамены. Страшный суд может также указывать на то, что гадающего ожидает увольнение с работы или прием на работу.'},
     {name: 'Мир', url: 'img\\мир.jpg', total: 'Это удовлетворение от удачно завершенного дела. Это последняя карта Таро. Она говорит человеку, что пора анализировать завершенные дела и обретать гармонию с собой и окружающим миром.', love: 'Такой аркан указывает на то, что в отношениях пары нет страсти, но присутствует духовная близость. Это может стать основой для создания крепкой семьи.', health: 'Мир говорит о хорошем, крепком здоровье. Это актуально только в том случае, если выполняется расклад «Одна карта», поскольку в комбинациях с другими арканами карта может предвещать летальный исход.', affairs: 'Карта указывает на то, что гадающего ожидает благоприятный период для бизнеса. Если вы давно планировали начать собственное дело, можно переходить к реализации задумки. Аркан также предвещает предпринимателям со стажем расширение бизнеса и выход на новый уровень вплоть до мировой арены. Благоприятный период для поиска новых партнеров. Кроме того, карта указывает на то, что можно расширять сферу своих интересов. Аркан также говорит о том, что гадающему поступит множество предложений о трудоустройстве. Можно выбирать любой вариант, который придется по сердцу.'}
 ];
-
-
 let value;
 const btnTotal = document.querySelector('.total'),
-      btnLove  = document.querySelector('.love'),
-      btnHealth = document.querySelector('.health'),
-      btnAffairs = document.querySelector('.affairs'),
-      card = document.querySelectorAll('.card'),
-      content = document.querySelector('.content');
-
-btnTotal.addEventListener('click', (event) => {
-    event.preventDefault();
-
-    value = 'total';
-    valueTaro();
-});
-btnLove.addEventListener('click', (event) => {
-    event.preventDefault();
-
-    value = 'love';
-    valueTaro();
-});
-btnHealth.addEventListener('click', (event) => {
-    event.preventDefault();
-
-    value = 'health';
-    valueTaro();
-});
-btnAffairs.addEventListener('click', (event) => {
-    event.preventDefault();
-
-    value = 'affairs';
-    valueTaro();
-});
-
-card.forEach((item) => {
-    item.addEventListener('onClick', () => {
+              btnLove  = document.querySelector('.love'),
+              btnHealth = document.querySelector('.health'),
+              btnAffairs = document.querySelector('.affairs'),
+              card = document.querySelectorAll('.card'),
+              content = document.querySelector('.content');
         
-        valueTaro();
-    });
-});
+        btnTotal.addEventListener('click', (event) => {
+            event.preventDefault();
+        
+            value = 'total';
+            valueTaro();
+        });
+        btnLove.addEventListener('click', (event) => {
+            event.preventDefault();
+        
+            value = 'love';
+            valueTaro();
+            
+        });
+        btnHealth.addEventListener('click', (event) => {
+            event.preventDefault();
+        
+            value = 'health';
+            valueTaro();
+            
+        });
+        btnAffairs.addEventListener('click', (event) => {
+            event.preventDefault();
+        
+            value = 'affairs';
+            valueTaro();
+            
+        });
 
 function valueTaro() {
     let num = getRandomInt(0, 21);
@@ -78,6 +72,7 @@ function valueTaro() {
                 </div>
                 <p><button class="btn-snov">Гадать снова</button></p>
                 `;
+                break;
             case 'love':
                 content.innerHTML = `
                 <div class="value">
@@ -89,6 +84,7 @@ function valueTaro() {
                 </div>
                 <p><button class="btn-snov">Гадать снова</button></p>
                 `;
+                break;
             case 'health':
                 content.innerHTML = `
                 <div class="value">
@@ -100,6 +96,7 @@ function valueTaro() {
                 </div>
                 <p><button class="btn-snov">Гадать снова</button></p>
                 `;
+                break;
             case 'affairs':
                 content.innerHTML = `
                 <div class="value">
@@ -111,138 +108,20 @@ function valueTaro() {
                 </div>
                 <p><button class="btn-snov">Гадать снова</button></p>
                 `;
+                break;
         }
+        snov();
 }
 
-
+function snov() {
+    const btnSnov = document.querySelector(".btn-snov");
+        btnSnov.addEventListener('click', (event) => {
+            location.reload();
+        });
+}
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min; //Максимум не включается, минимум включается
-}
-
-
-const btnSnov = document.querySelector(".btn-snov");
-
-btnSnov.addEventListener("click" (event => {
-    event.preventDefault();
-
-    content.innerHTML = `
-    <div class="vybor">
-        <h2>На что будете гадать?</h2>
-        <button class='total'>Общее значение</button>
-        <button class='love'>Отношения</button>
-        <button class='health'>Здоровье</button>
-        <button class='affairs'>Дела</button>
-    </div>
-    `;
-}));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function addCard() {
-    content.innerHTML = `
-    <div class="cards">
-        <div class="cards-block">
-            <button class="card">
-                <img src="img/карта.jpg" alt="">
-            </button>
-            <div class="card">
-                <img src="img/карта.jpg" alt="">
-            </div>
-            <div class="card">
-                <img src="img/карта.jpg" alt="">
-            </div>
-            <div class="card">
-                <img src="img/карта.jpg" alt="">
-            </div>
-        </div>
-        <div class="cards-block">
-            <div class="card">
-                <img src="img/карта.jpg" alt="">
-            </div>
-            <div class="card">
-                <img src="img/карта.jpg" alt="">
-            </div>
-            <div class="card">
-                <img src="img/карта.jpg" alt="">
-            </div>
-            <div class="card">
-                <img src="img/карта.jpg" alt="">
-            </div>
-        </div>
-        <div class="cards-block">
-            <div class="card">
-                <img src="img/карта.jpg" alt="">
-            </div>
-            <div class="card">
-                <img src="img/карта.jpg" alt="">
-            </div>
-            <div class="card">
-                <img src="img/карта.jpg" alt="">
-            </div>
-            <div class="card">
-                <img src="img/карта.jpg" alt="">
-            </div>
-        </div>
-        <div class="cards-block">
-            <div class="card">
-                <img src="img/карта.jpg" alt="">
-            </div>
-            <div class="card">
-                <img src="img/карта.jpg" alt="">
-            </div>
-            <div class="card">
-                <img src="img/карта.jpg" alt="">
-            </div>
-            <div class="card">
-                <img src="img/карта.jpg" alt="">
-            </div>
-        </div>
-        <div class="cards-block">
-            <div class="card">
-                <img src="img/карта.jpg" alt="">
-            </div>
-            <div class="card">
-                <img src="img/карта.jpg" alt="">
-            </div>
-            <div class="card">
-                <img src="img/карта.jpg" alt="">
-            </div>
-            <div class="card">
-                <img src="img/карта.jpg" alt="">
-            </div>
-        </div>
-    </div>    
-    `;
 }
